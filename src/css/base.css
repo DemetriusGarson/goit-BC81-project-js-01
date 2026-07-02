@@ -30,3 +30,35 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+
+/*? скинул Владимир с прошлого проекта */
+
+/* :root {
+  --font-family-base: 'Tajawal', sans-serif;
+  --font-family-second: 'Caveat', sans-serif;
+
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+  --font-weight-base: 400;
+  --letter-spacing-base: -0.01em;
+  --color-base: #0c0708;
+  --background-color-base: #faf6f3;
+  --background-color-accent: #ffb780;
+  --background-color-footer: #ffcca6;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+  color: var(--color-base);
+  background-color: var(--background-color-base);
+} */
