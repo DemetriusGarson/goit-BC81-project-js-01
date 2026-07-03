@@ -9,8 +9,8 @@ import{a}from"./assets/vendor-Bie5rgBU.js";(function(){const n=document.createEl
           height="251"
         />
         <div class="event-info">
-          <p class="event-title">${t.name}</p>
-          <p class="event-text">${t.tags}</p>
+          <p class="event-title">${r}</p>
+          <p class="event-text">${t.name}</p>
           <p class="event-price">від ${e.value} грн</p>
         </div>
         <button type="button" class="event-details-btn" data-event-id="${o}">Детальніше</button>
