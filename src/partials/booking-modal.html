@@ -1,3 +1,67 @@
 <section class="section booking-modal">
-  <div class="container"></div>
+  <div class="container">
+    <div class="booking-modal_window">
+      <button
+        class="booking-modal_close-btn"
+        type="button"
+        data-booking-close
+        aria-label="Закрити модальне вікно"
+      >
+        <svg
+          class="booking-modal_close-icon"
+          width="14"
+          height="14"
+          aria-hidden="true"
+        >
+          <use href="./img/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <h2 class="booking-modal_title">Замовити івент</h2>
+
+      <form class="booking-modal_form">
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Ім'я*</span>
+          <input
+            class="booking-modal_input"
+            type="text"
+            name="name"
+            placeholder="Ваше ім'я"
+            autocomplete="name"
+          />
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Телефон*</span>
+          <input
+            class="booking-modal_input"
+            type="tel"
+            name="phone"
+            placeholder="38 099 901 11 22"
+            autocomplete="tel"
+          />
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Коментар*</span>
+          <textarea
+            class="booking-modal_textarea"
+            name="comment"
+            placeholder="Напишіть ваш коментар"
+          ></textarea>
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <button
+          class="booking-modal_submit-btn"
+          type="submit"
+          data-booking-submit
+        >
+          <span class="booking-modal_submit-text">Надіслати заявку</span>
+        </button>
+      </form>
+    </div>
+  </div>
 </section>
