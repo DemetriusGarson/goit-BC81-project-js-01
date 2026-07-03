@@ -33,7 +33,38 @@
     font-size: 18px;
     line-height: 29px;
     color: #000;
+    position: relative;
+    
 }
+/* !!! +++++ Пример реализации ховера, фокуса и актива для текстовых ссылок по макету */
+.footer-navigation-item-reference:hover::after,
+.footer-navigation-item-reference:focus::after{
+    
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 1px;
+    background-color: #000;
+    left: 0px;
+    bottom: -1px;
+    
+}
+
+.footer-navigation-item-reference:active{
+    color: #ffd554;
+}
+
+.footer-navigation-item-reference:active::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 1px;
+    background-color: #ffd554;
+    left: 0px;
+    bottom: -1px;
+}
+
+/* !!! ------- Пример реализации ховера, фокуса и актива для текстовых ссылок по макету */
 
 .footer-social-list{
     display: flex;
@@ -43,7 +74,37 @@
 
 .footer-social-reference{
     display:flex;
+    position: absolute;
 }
+
+/* !!! +++++ Пример реализации ховера, фокуса и актива для иконок ссылок по макету */
+
+.footer-social-reference:hover,
+.footer-social-reference:focus{
+
+    background-color: #fff6dc;
+}
+
+.footer-social-reference:hover::after,
+.footer-social-reference:focus::after{
+
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 1px solid #000;
+    border-radius: 6px;
+}
+
+.footer-social:active{
+    background-color: #fff6dc;
+}
+
+.footer-social:active footer-social-icon{
+    fill: #ffd554;
+}
+
+/* !!! ---- Пример реализации ховера, фокуса и актива для иконок ссылок по макету */
 
 .footer-credits{
     display:flex;
