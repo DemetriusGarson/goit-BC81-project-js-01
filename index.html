@@ -8,7 +8,7 @@
     <script type="module" crossorigin src="/goit-BC81-project-js-01/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-BIW9uWCR.js">
     <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-BfPs2Zf6.css">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-CIwICKyl.css">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-RRqzW0Eu.css">
   </head>
   <body>
     <header class="section header">
@@ -454,41 +454,71 @@
   <div class="container"></div>
 </section>
 
-    <section class="section booking-modal" id="mobile-menu">
-  <div class="container mobile-menu-container">
-    <div class="mobile-menu-top">
-      <a href="./index.html" class="header-logo" aria-label="Файно свято">
-        <svg class="logo-icon" width="24" height="24">
-          <use href="/goit-BC81-project-js-01/assets/sprite-kFDfZW0W.svg#icon-logo"></use>
+    <section class="section booking-modal">
+  <div class="container">
+    <div class="booking-modal_window">
+      <button
+        class="booking-modal_close-btn"
+        type="button"
+        data-booking-close
+        aria-label="Закрити модальне вікно"
+      >
+        <svg
+          class="booking-modal_close-icon"
+          width="14"
+          height="14"
+          aria-hidden="true"
+        >
+          <use href="/goit-BC81-project-js-01/assets/sprite-kFDfZW0W.svg#icon-close"></use>
         </svg>
-        <span class="logo-text">Файно свято</span>
-      </a>
+      </button>
+
+      <h2 class="booking-modal_title">Замовити івент</h2>
+
+      <form class="booking-modal_form">
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Ім'я*</span>
+          <input
+            class="booking-modal_input"
+            type="text"
+            name="name"
+            placeholder="Ваше ім'я"
+            autocomplete="name"
+          />
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Телефон*</span>
+          <input
+            class="booking-modal_input"
+            type="tel"
+            name="phone"
+            placeholder="38 099 901 11 22"
+            autocomplete="tel"
+          />
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <label class="booking-modal_field">
+          <span class="booking-modal_field-label">Коментар*</span>
+          <textarea
+            class="booking-modal_textarea"
+            name="comment"
+            placeholder="Напишіть ваш коментар"
+          ></textarea>
+          <span class="booking-modal_error"></span>
+        </label>
+
+        <button
+          class="booking-modal_submit-btn"
+          type="submit"
+          data-booking-submit
+        >
+          <span class="booking-modal_submit-text">Надіслати заявку</span>
+        </button>
+      </form>
     </div>
-
-    <nav class="header-nav mobile-menu-nav">
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a href="#events" class="nav-link active">Івенти</a>
-        </li>
-        <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
-        <li class="nav-item">
-          <a href="#faq" class="nav-link">Часті питання</a>
-        </li>
-        <li class="nav-item">
-          <a href="#reviews" class="nav-link">Відгуки</a>
-        </li>
-      </ul>
-    </nav>
-
-    <button type="button" class="consultation-btn mobile-menu-btn">
-      Замовити консультацію
-    </button>
-
-    <button type="button" class="menu-close-btn" aria-label="Закрити меню">
-      <svg class="close-icon" width="32" height="32">
-        <use href="/goit-BC81-project-js-01/assets/sprite-kFDfZW0W.svg#icon-close"></use>
-      </svg>
-    </button>
   </div>
 </section>
 
