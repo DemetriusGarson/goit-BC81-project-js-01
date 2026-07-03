@@ -115,7 +115,7 @@ body {
   background-color: #f2f2f2;
   border: 1px solid transparent;
   &:hover,
-  &:hover {
+  &:focus {
     border: 1px solid #7f7f7f;
   }
   &:active {
@@ -124,7 +124,7 @@ body {
 
   @media (min-width: 768px) {
     border-radius: 4px;
-    background: #f2f2f2;
+    background-color: #f2f2f2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,7 +158,8 @@ body {
   padding: 4px 0;
   @media (min-width: 768px) {
     border-top: none;
-    &:hover {
+    &:hover,
+    &:focus {
       border: 1px solid #7f7f7f;
     }
   }
