@@ -7,4 +7,5 @@ export const refs = {
   firstCategoryButton: document.querySelector('.categories__btn'),
   showMoreBtn: document.querySelector('.show-more-btn'),
   loader: document.querySelector('.loader'),
+  eventDetailsBtn: document.querySelector('.event-details-btn'),
 };
