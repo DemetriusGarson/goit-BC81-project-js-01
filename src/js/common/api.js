@@ -1,6 +1,6 @@
 import axios from 'axios';
-axios.defaults.baseURL = API_BASE_URL;
 import { API_ENDPOINTS, API_BASE_URL } from './constans';
+axios.defaults.baseURL = API_BASE_URL;
 
 export async function getCategories() {
   const response = await axios.get(API_ENDPOINTS.CATEGORIES);
