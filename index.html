@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Файно свято</title>
     <script type="module" crossorigin src="/goit-BC81-project-js-01/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-DjtasW9M.js">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-B3aETm4p.css">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-NcJnxjAB.css">
+    <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-DC2uqsj1.js">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-Cxw31ynQ.css">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-y6NA9owk.css">
   </head>
   <body>
     <header class="section header">
@@ -622,7 +622,6 @@
       <button
         class="booking-modal_close-btn"
         type="button"
-        data-booking-close
         aria-label="Закрити модальне вікно"
       >
         <svg
@@ -647,7 +646,7 @@
             placeholder="Ваше ім'я"
             autocomplete="name"
           />
-          <span class="booking-modal_error"></span>
+          <span class="booking-modal_error" id="nameError"></span>
         </label>
 
         <label class="booking-modal_field">
@@ -659,7 +658,7 @@
             placeholder="38 099 901 11 22"
             autocomplete="tel"
           />
-          <span class="booking-modal_error"></span>
+          <span class="booking-modal_error" id="phoneError"></span>
         </label>
 
         <label class="booking-modal_field">
@@ -669,7 +668,7 @@
             name="comment"
             placeholder="Напишіть ваш коментар"
           ></textarea>
-          <span class="booking-modal_error"></span>
+          <span class="booking-modal_error" id="commentError"></span>
         </label>
         <div class="loader is-hidden"></div>
         <button
