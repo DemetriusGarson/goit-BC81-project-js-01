@@ -1,92 +1,93 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { hideLoader, showLoader } from './common/helpers';
+import { refs } from './common/refs';
 
 const BASE_URL = 'https://events-store.b.goit.study/api';
 
-const modal = document.querySelector('.booking-modal');
-const closeBtn = document.querySelector('.booking-modal_close-btn');
-const form = document.querySelector('.booking-modal_form');
-const submitBtn = document.querySelector('.booking-modal_submit-btn');
-const submitText = submitBtn.querySelector('.booking-modal_submit-text');
-const nameInput = form.querySelector('[name="name"]');
-const phoneInput = form.querySelector('[name="phone"]');
-const commentInput = form.querySelector('[name="comment"]');
+const modalBooking = document.querySelector('.booking-modal');
+const closeBtnBooking = document.querySelector('.booking-modal_close-btn');
+const formBooking = document.querySelector('.booking-modal_form');
+const submitBtnBooking = document.querySelector('.booking-modal_submit-btn');
+
+const nameInput = formBooking.querySelector('[name="name"]');
+const phoneInput = formBooking.querySelector('[name="phone"]');
+const commentInput = formBooking.querySelector('[name="comment"]');
+const nameError = nameInput
+  .closest('.booking-modal_field')
+  .querySelector('.booking-modal_error');
+const phoneError = phoneInput
+  .closest('.booking-modal_field')
+  .querySelector('.booking-modal_error');
+const commentError = commentInput
+  .closest('.booking-modal_field')
+  .querySelector('.booking-modal_error');
+
+formBooking.addEventListener('submit', handleFormBookingSubmit);
+// кнопка в хедері замовити івент
+// const openBtn = document.querySelector('.consultation-btn');
+// openBtn.addEventListener('click', () => {
+//   openBookingModal('6877b9f116ae59c7b60d90a2');
+// });
 
 let currentEventId = null;
 
 export function openBookingModal(eventId) {
   currentEventId = eventId;
-  modal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
-
+  modalBooking.classList.add('is-open');
   document.addEventListener('keydown', handleEscKeyPress);
-  closeBtn.addEventListener('click', handleModalCloseBtnClick);
-  modal.addEventListener('click', handleBackDropClick);
-  form.addEventListener('submit', handleFormSubmit);
+  closeBtnBooking.addEventListener('click', handleModalCloseBtnBookingClick);
+  modalBooking.addEventListener('click', handleBackDropClick);
 }
 
 export function closeBookingModal() {
-  modal.classList.remove('is-open');
-  document.body.style.overflow = '';
-  form.reset();
+  modalBooking.classList.remove('is-open');
+  formBooking.reset();
   clearErrors();
   currentEventId = null;
-
+  document.body.style.overflow = '';
   document.removeEventListener('keydown', handleEscKeyPress);
-  closeBtn.removeEventListener('click', handleModalCloseBtnClick);
-  modal.removeEventListener('click', handleBackDropClick);
-  form.removeEventListener('submit', handleFormSubmit);
+  closeBtnBooking.removeEventListener('click', handleModalCloseBtnBookingClick);
+  modalBooking.removeEventListener('click', handleBackDropClick);
 }
-
 function handleEscKeyPress(event) {
   if (event.code === 'Escape') {
     closeBookingModal();
   }
 }
-
-function handleModalCloseBtnClick() {
+function handleModalCloseBtnBookingClick() {
   closeBookingModal();
 }
-
 function handleBackDropClick(event) {
-  if (!event.target.closest('.booking-modal_window')) {
+  if (event.target === modalBooking) {
     closeBookingModal();
   }
 }
 
-function validateForm() {
+function validateBooking() {
   const errors = {};
-
   const name = nameInput.value.trim();
   if (!name) {
     errors.name = "Введіть ваше ім'я";
   } else if (name.length < 2 || name.length > 48) {
     errors.name = "Ім'я має бути від 2 до 48 символів";
   }
-
   const phone = phoneInput.value.trim().replace(/\D/g, '');
   if (!phone) {
     errors.phone = 'Введіть номер телефону';
-  } else if (!/^[0-9]{12}$/.test(phone)) {
+  } else if (phone.length !== 12) {
     errors.phone = 'Телефон має містити рівно 12 цифр, напр. 380961234568';
   }
-
   const comment = commentInput.value.trim();
   if (!comment) {
     errors.comment = 'Введіть коментар';
   } else if (comment.length > 256) {
-    errors.comment = 'Коментар занадто довгий (максимум 256 символів)';
+    errors.comment = `Коментар занадто довгий (максимум 256 символів), а у вас ${comment.length}`;
   }
-
   return errors;
 }
-
-const fieldInputs = {
-  name: nameInput,
-  phone: phoneInput,
-  comment: commentInput,
-};
 
 function showErrors(errors) {
   clearErrors();
@@ -95,13 +96,11 @@ function showErrors(errors) {
     nameError.textContent = errors.name;
     nameError.classList.add('is-visible');
   }
-
   if (errors.phone) {
     phoneInput.classList.add('is-error');
     phoneError.textContent = errors.phone;
     phoneError.classList.add('is-visible');
   }
-
   if (errors.comment) {
     commentInput.classList.add('is-error');
     commentError.textContent = errors.comment;
@@ -123,59 +122,59 @@ function clearErrors() {
   commentError.classList.remove('is-visible');
 }
 
-async function handleFormSubmit(event) {
+async function handleFormBookingSubmit(event) {
   event.preventDefault();
-
-  const errors = validateForm();
-
-  if (Object.keys(errors).length > 0) {
+  const errors = validateBooking();
+  if (errors.name || errors.phone || errors.comment) {
     showErrors(errors);
     return;
   }
-
   clearErrors();
-
-  const payload = {
+  const formData = {
     name: nameInput.value.trim(),
     phone: phoneInput.value.trim().replace(/\D/g, ''),
     eventId: currentEventId,
     comment: commentInput.value.trim(),
   };
 
-  setLoading(true);
-
   try {
-    const response = await axios.post(`${BASE_URL}/orders`, payload);
-
-    const { eventName, orderNum } = response.data;
-
+    hideSubmitBtnBooking();
+    showLoader();
+    submitBtnBooking.disabled = true;
+    const { data } = await axios.post(`${BASE_URL}/orders`, formData);
+    const { eventName, orderNum } = data;
     iziToast.success({
       message: `Дякуємо! Ви замовили івент до ${eventName}, ваше замовлення №${orderNum}. Очікуйте на зворотній зв'язок.`,
       position: 'topRight',
       timeout: 6000,
     });
-
     closeBookingModal();
   } catch (error) {
-    const status = error.response?.status;
-    let message = 'Сталася помилка під час відправки заявки. Спробуйте ще раз.';
-
-    if (status === 404) {
-      message = 'Цю подію більше не знайдено. Спробуйте оновити сторінку.';
-    } else if (status === 400) {
-      message = 'Перевірте правильність введених даних.';
+    if (error.status === 400) {
+      iziToast.error({
+        message: 'Помилка запиту',
+        position: 'topRight',
+        timeout: 6000,
+      });
+      console.log(error);
     }
-
-    iziToast.error({
-      message,
-      position: 'topRight',
-      timeout: 6000,
-    });
+    if (error.status === 404) {
+      iziToast.error({
+        message: 'Немає такого івенту =(',
+        position: 'topRight',
+        timeout: 6000,
+      });
+      console.log(error);
+    }
   } finally {
-    setLoading(false);
+    showSubmitBtnBooking();
+    hideLoader();
+    submitBtnBooking.disabled = false;
   }
 }
-
-function setLoading(isLoading) {
-  submitBtn.disabled = isLoading;
+export function showSubmitBtnBooking() {
+  submitBtnBooking.classList.remove('is-hidden');
+}
+export function hideSubmitBtnBooking() {
+  submitBtnBooking.classList.add('is-hidden');
 }
