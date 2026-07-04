@@ -16,7 +16,7 @@ export function renderCategories(allcategories) {
   const markup = categoryList
     .map(({ _id, name, tags }, index) => {
       const dynamicClass = getCategoryClass(categoryList.length, index);
-      const tagsList = tags.map(tag => `#${tag}, `).join('');
+      const tagsList = tags.map(tag => `#${tag} `).join('');
       return `<li class="event-category-item ${dynamicClass}" data-category="${_id}">
           <p class="event-category-title">${name}</p>
           <p class="event-category-tags">${tagsList}</p>
