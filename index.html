@@ -8,7 +8,7 @@
     <script type="module" crossorigin src="/goit-BC81-project-js-01/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-BIW9uWCR.js">
     <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-BfPs2Zf6.css">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-DfJTj6Bz.css">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-DdQE911y.css">
   </head>
   <body>
     <header class="section header">
@@ -95,8 +95,41 @@
 
 
     <main>
-      <section class="section hero">
-  <div class="container"></div>
+      <section class="section hero" id="hero">
+  <div class="container">
+    <div class="hero-wrraper-text">
+      <h1 class="hero-title">Ваше ідеальне свято — наша турбота</h1>
+      <p class="hero-text">
+        Від дитячого дня народження до великого корпоративу.
+        <br class="mobile-break" />Організуємо подію, яку ви запам'ятаєте
+        назавжди.
+      </p>
+      <a href="#event-list" class="hero-link-events">Обрати івент</a>
+    </div>
+    <picture>
+      <source
+        media="(min-width: 1440px)"
+        srcset="/goit-BC81-project-js-01/assets/Hero_Desktop@1x-k5fDyGp5.avif 1x, /goit-BC81-project-js-01/assets/Hero_Desktop@2x-59k7Wxx4.avif 2x"
+        width="1312"
+        height="738"
+      />
+
+      <source
+        media="(min-width: 768px)"
+        srcset="/goit-BC81-project-js-01/assets/Hero_Tablet@1x-DdLZgr2D.avif 1x, /goit-BC81-project-js-01/assets/Hero_Tablet@2x-B4_OKlgs.avif 2x"
+        width="704"
+        height="396"
+      />
+
+      <img
+        srcset="/goit-BC81-project-js-01/assets/Hero_Mobile@1x-BIQIolBr.avif 1x, /goit-BC81-project-js-01/assets/Hero_Mobile@2x-C5qQSBUR.avif 2x"
+        src="/goit-BC81-project-js-01/assets/Hero_Mobile@1x-BIQIolBr.avif"
+        alt="An emotional, wide-format photograph of a stylish celebration on a summer terrace at sunset. A group of elegantly dressed, happy, diverse people, aged 25-45, are genuinely laughing and casually interacting, holding glasses with drinks. Warm, golden light creates soft highlights, with blurred string lights in the background creating a beautiful bokeh effect. The atmosphere is sophisticated, warm, and filled with genuine joy. The image should be cinematic, highly detailed, with natural and vibrant colors."
+        width="335"
+        height="254"
+      />
+    </picture>
+  </div>
 </section>
 
       <section class="section event-list" id="event-list">
