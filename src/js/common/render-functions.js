@@ -1,4 +1,7 @@
+import { getCategoryClass } from './helpers';
 import { refs } from './refs';
+import SimpleBar from 'simplebar';
+import 'simplebar/dist/simplebar.css';
 
 export function renderCategories(allcategories) {
   const categoryList = [
@@ -11,19 +14,31 @@ export function renderCategories(allcategories) {
   ];
 
   const markup = categoryList
-    .map(category => {
-      return `<li class="event-category-item" data-category="${category._id}">
-          <p class="event-category-title">${category.name}</p>
-          <p class="event-category-tags">${category.tags.map(tag => `#${tag},`).join(' ')}</p>
+    .map(({ _id, name, tags }, index) => {
+      const dynamicClass = getCategoryClass(categoryList.length, index);
+      const tagsList = tags.map(tag => `#${tag}, `).join('');
+      return `<li class="event-category-item ${dynamicClass}" data-category="${_id}">
+          <p class="event-category-title">${name}</p>
+          <p class="event-category-tags">${tagsList}</p>
         </li>`;
     })
     .join('');
 
   refs.categoriesListEl.innerHTML = markup;
-  const firstCategoryButton = document.querySelector('.categories__btn');
-  if (firstCategoryButton) {
-    firstCategoryButton.classList.add('categories__btn--active');
+  if (refs.firstCategoryButton) {
+    refs.firstCategoryButton.classList.add('categories__btn--active');
   }
+  if (window.innerWidth < 768 && !refs.categoriesListEl.SimpleBar) {
+    new SimpleBar(refs.categoriesListEl, {
+      autoHide: false,
+    });
+  }
+}
+
+refs.caregoryListSelect.addEventListener('click', openCategoriesList);
+export function openCategoriesList(event) {
+  refs.categoriesListOpenSvgBtn.classList.toggle('icon-rotate-rotated');
+  refs.categoriesListOpen.classList.toggle('is-hidden');
 }
 
 export function renderEvents(events) {
@@ -32,7 +47,7 @@ export function renderEvents(events) {
       return `<li class="event-item">
         <img
           src="${image}"
-          alt=""${name}"
+          alt="${name}"
           width="335"
           height="251"
         />
