@@ -7,14 +7,21 @@ import { hideLoader, showLoader } from './helpers';
 let currentPage = 1;
 let currentCategory = 'all';
 
+export function checkWidthScreen() {
+  return window.innerWidth < 768
+    ? API_ENDPOINTS.LIMIT / 2
+    : API_ENDPOINTS.LIMIT;
+}
 export async function initEventList() {
   try {
     showLoader();
     const data = await getCategories();
     renderCategories(data);
+    const limit = checkWidthScreen();
     const { events, totalItems } = await getEvents(
       currentPage,
-      currentCategory
+      currentCategory,
+      limit
     );
     renderEvents(events);
     checkEventsLimit(totalItems);
@@ -33,9 +40,11 @@ export async function handleGetEventsByCategory(event) {
     currentPage = 1;
     refs.eventsList.innerHTML = '';
     showLoader();
+    const limit = checkWidthScreen();
     const { events, totalItems } = await getEvents(
       currentPage,
-      currentCategory
+      currentCategory,
+      limit
     );
     renderEvents(events);
     checkEventsLimit(totalItems);
@@ -49,9 +58,11 @@ export async function handleShowMoreBtnClick(event) {
   currentPage += 1;
   try {
     showLoader();
+    const limit = checkWidthScreen();
     const { events, totalItems } = await getEvents(
       currentPage,
-      currentCategory
+      currentCategory,
+      limit
     );
     renderEvents(events);
     checkEventsLimit(totalItems);
@@ -63,7 +74,8 @@ export async function handleShowMoreBtnClick(event) {
   }
 }
 export function checkEventsLimit(totalItems) {
-  refs.showMoreBtn.disabled = currentPage * API_ENDPOINTS.LIMIT >= totalItems;
+  const limit = checkWidthScreen();
+  refs.showMoreBtn.disabled = currentPage * limit >= totalItems;
 }
 export function handleEventDetailsModal(event) {
   const details = event.target.dataset.eventId;
