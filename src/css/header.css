@@ -3,22 +3,6 @@
   width: 100%;
 }
 
-.header .container {
-  padding: 0 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 64px;
-}
-
-@media screen and (min-width: 1158px) {
-  .header .container {
-    height: 72px;
-  }
-}
-
 .section.header {
   padding-top: 0;
   padding-bottom: 0;
@@ -36,15 +20,6 @@
   font-size: 22px;
   font-weight: 500;
   color: #000000;
-}
-
-.menu-open-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
 }
 
 .consultation-btn {
@@ -71,15 +46,30 @@
   border-color: #cca425;
 }
 
-@media (max-width: 767px) {
-  .header-menu {
-    display: none;
-  }
+.header .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
 }
-@media (min-width: 768px) and (max-width: 1023px) {
-  .header .container {
-    padding: 0 32px;
-    max-width: 768px;
+
+.menu-open-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header-menu {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-open-btn {
+    display: flex;
   }
 
   .header-menu {
@@ -94,14 +84,16 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .menu-open-btn {
-    display: none;
+@media screen and (min-width: 1440px) {
+  .header .container {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .header .container {
-    max-width: 1158px;
-    padding: 0 64px;
+  .menu-open-btn {
+    display: none;
   }
 
   .header-menu {
@@ -110,11 +102,14 @@
     justify-content: space-between;
     flex-grow: 1;
     margin-left: 40px;
+    margin-right: 0;
   }
 
   .header-nav {
     display: block;
-    margin: 0 auto;
+
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .nav-list {
@@ -127,8 +122,25 @@
   }
 
   .nav-link {
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
     font-size: 18px;
     font-weight: 400;
     transition: color 0.25s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: #000000;
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .consultation-btn {
+    width: 163px;
+    height: 37px;
   }
 }
