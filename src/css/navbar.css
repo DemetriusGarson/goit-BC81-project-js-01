@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. БАЗОВЫЕ СТИЛИ МОДАЛКИ (Скрыта по умолчанию)
-   ========================================================================= */
 .navbar {
   position: fixed;
   top: 0;
@@ -25,7 +22,6 @@
   visibility: hidden;
 }
 
-/* Жестко сбрасываем флексы контейнера, чтобы элементы не выстраивались в кучу */
 div.container.mobile-menu-container {
   position: relative !important;
   display: block !important;
@@ -34,7 +30,6 @@ div.container.mobile-menu-container {
   padding-right: 20px;
 }
 
-/* Базовый сброс кнопок */
 .mobile-menu-btn,
 .menu-close-btn {
   background: none;
@@ -43,7 +38,6 @@ div.container.mobile-menu-container {
   cursor: pointer;
 }
 
-/* Базовый сброс списков */
 .mobile-menu-nav .nav-list {
   display: flex;
   flex-direction: column;
@@ -52,9 +46,6 @@ div.container.mobile-menu-container {
   margin: 0;
 }
 
-/* ==========================================================================
-   2. МОБИЛЬНАЯ ВЕРСИЯ (До 767px включительно)
-   ========================================================================= */
 @media screen and (max-width: 767px) {
   div.container.mobile-menu-container {
     padding-top: 16px;
@@ -66,7 +57,6 @@ div.container.mobile-menu-container {
     align-items: center;
   }
 
-  /* Крестик на мобилке справа сверху */
   .menu-close-btn {
     position: absolute;
     top: 28px;
@@ -77,7 +67,6 @@ div.container.mobile-menu-container {
     justify-content: center;
   }
 
-  /* Навигация */
   .mobile-menu-nav {
     display: block;
     margin-top: 40px;
@@ -89,7 +78,6 @@ div.container.mobile-menu-container {
     margin-bottom: 40px;
   }
 
-  /* Желтая кнопка на всю ширину под ссылками */
   .mobile-menu-btn {
     display: block;
     position: static;
@@ -99,9 +87,6 @@ div.container.mobile-menu-container {
   }
 }
 
-/* ==========================================================================
-   3. ПЛАНШЕТНАЯ ВЕРСИЯ (От 768px до 1439px)
-   ========================================================================= */
 @media screen and (min-width: 768px) {
   div.container.mobile-menu-container {
     padding-top: 24px;
@@ -114,46 +99,40 @@ div.container.mobile-menu-container {
     display: block;
   }
 
-  /* ЖЕЛТАЯ КНОПКА: идеально центрируется по вертикальной оси логотипа */
   .mobile-menu-btn {
     display: block;
     position: absolute;
     top: 24px;
-    right: 76px; /* Оставляем место справа под крестик */
+    right: 76px;
     margin: 0;
     background-color: #ffd554;
     color: #000000;
   }
 
-  /* КРЕСТИК: высчитан под центр логотипа и желтой кнопки */
   .menu-close-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 42.5px; /* Корректная осевая линия для иконки 14x14 при top кнопки 24px и высоте 37px */
+    top: 42.5px;
     transform: translateY(-50%);
-    right: 32px; /* Прижимаем к правому краю контейнера планшета */
+    right: 32px;
     font-size: 18px;
     font-weight: 700;
   }
 
-  /* ССЫЛКИ: опускаются ниже шапки и встают ровно по центру экрана */
   .mobile-menu-nav {
     display: block;
-    margin-top: 40px; /* Сдвинули вниз, чтобы не было наложения на логотип */
+    margin-top: 40px;
     margin-bottom: 0;
   }
 
   .mobile-menu-nav .nav-list {
-    align-items: center; /* Текст строго по центру */
+    align-items: center;
     gap: 32px;
   }
 }
 
-/* ==========================================================================
-   4. ДЕСКТОПНАЯ ВЕРСИЯ (От 1440px)
-   ========================================================================= */
 @media screen and (min-width: 1440px) {
   .navbar {
     display: none;
