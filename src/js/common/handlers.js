@@ -15,14 +15,12 @@ export function checkWidthScreen() {
 export async function initEventList() {
   try {
     showLoader();
-    const data = await getCategories();
-    renderCategories(data);
     const limit = checkWidthScreen();
-    const { events, totalItems } = await getEvents(
-      currentPage,
-      currentCategory,
-      limit
-    );
+    const [data, { events, totalItems }] = await Promise.all([
+      getCategories(),
+      getEvents(currentPage, currentCategory, limit),
+    ]);
+    renderCategories(data);
     renderEvents(events);
     checkEventsLimit(totalItems);
   } catch (error) {
