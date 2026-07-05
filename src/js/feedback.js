@@ -12,12 +12,12 @@ const swiperOptions = {
   // slidesPerView: 3, // todo: only PC
 
   pagination: {
-    el: '.swiper-pagination',
+    el: '.feedback-pagination',
     // dynamicBullets: true, // todo: only PC
   },
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.feedback-next',
+    prevEl: '.feedback-prev',
   },
   modules: [Navigation, Pagination],
 };
