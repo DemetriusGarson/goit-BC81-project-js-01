@@ -26,7 +26,7 @@ const commentError = commentInput
 
 formBooking.addEventListener('submit', handleFormBookingSubmit);
 // кнопка в хедері замовити івент
-// const openBtn = document.querySelector('.consultation-btn');
+// const openBtn = document.querySelector('.modal-event__order-btn');
 // openBtn.addEventListener('click', () => {
 //   openBookingModal('6877b9f116ae59c7b60d90a2');
 // });
@@ -53,15 +53,15 @@ export function closeBookingModal() {
   closeBtnBooking.removeEventListener('click', handleModalCloseBtnBookingClick);
   modalBooking.removeEventListener('click', handleBackDropClick);
 }
-function handleEscKeyPress(event) {
+export function handleEscKeyPress(event) {
   if (event.code === 'Escape') {
     closeBookingModal();
   }
 }
-function handleModalCloseBtnBookingClick() {
+export function handleModalCloseBtnBookingClick() {
   closeBookingModal();
 }
-function handleBackDropClick(event) {
+export function handleBackDropClick(event) {
   if (event.target === modalBooking) {
     closeBookingModal();
   }
