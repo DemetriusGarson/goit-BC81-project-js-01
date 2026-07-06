@@ -83,7 +83,6 @@
   left: 0;
   right: 0;
   justify-content: space-between;
-  pointer-events: none;
   transform: translateY(-50%);
 }
 
