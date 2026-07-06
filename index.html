@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Файно свято</title>
     <script type="module" crossorigin src="/goit-BC81-project-js-01/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-J54O91YU.js">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-C99UG2SM.css">
-    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-D-emiwQo.css">
+    <link rel="modulepreload" crossorigin href="/goit-BC81-project-js-01/assets/vendor-CmT9KRLf.js">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/vendor-Cot_rEDV.css">
+    <link rel="stylesheet" crossorigin href="/goit-BC81-project-js-01/assets/index-BVPifuE3.css">
   </head>
   <body>
     <header class="section header">
@@ -728,14 +728,14 @@
 
     <section class="section booking-modal">
   <div class="container">
-    <div class="booking-modal_window">
+    <div class="booking-modal-window">
       <button
-        class="booking-modal_close-btn"
+        class="booking-modal-close-btn"
         type="button"
         aria-label="Закрити модальне вікно"
       >
         <svg
-          class="booking-modal_close-icon"
+          class="booking-modal-close-icon"
           width="14"
           height="14"
           aria-hidden="true"
@@ -744,49 +744,45 @@
         </svg>
       </button>
 
-      <h2 class="booking-modal_title">Замовити івент</h2>
+      <h2 class="booking-modal-title">Замовити івент</h2>
 
-      <form class="booking-modal_form">
-        <label class="booking-modal_field">
-          <span class="booking-modal_field-label">Ім'я*</span>
+      <form class="booking-modal-form">
+        <label class="booking-modal-field">
+          <span class="booking-modal-field-label">Ім'я*</span>
           <input
-            class="booking-modal_input"
+            class="booking-modal-input"
             type="text"
             name="name"
             placeholder="Ваше ім'я"
             autocomplete="name"
           />
-          <span class="booking-modal_error" id="nameError"></span>
+          <span class="booking-modal-error" id="nameError"></span>
         </label>
 
-        <label class="booking-modal_field">
-          <span class="booking-modal_field-label">Телефон*</span>
+        <label class="booking-modal-field">
+          <span class="booking-modal-field-label">Телефон*</span>
           <input
-            class="booking-modal_input"
+            class="booking-modal-input"
             type="tel"
             name="phone"
             placeholder="38 099 901 11 22"
             autocomplete="tel"
           />
-          <span class="booking-modal_error" id="phoneError"></span>
+          <span class="booking-modal-error" id="phoneError"></span>
         </label>
 
-        <label class="booking-modal_field">
-          <span class="booking-modal_field-label">Коментар*</span>
+        <label class="booking-modal-field">
+          <span class="booking-modal-field-label">Коментар*</span>
           <textarea
-            class="booking-modal_textarea"
+            class="booking-modal-textarea"
             name="comment"
             placeholder="Напишіть ваш коментар"
           ></textarea>
-          <span class="booking-modal_error" id="commentError"></span>
+          <span class="booking-modal-error" id="commentError"></span>
         </label>
         <div class="loader is-hidden"></div>
-        <button
-          class="booking-modal_submit-btn"
-          type="submit"
-          data-booking-submit
-        >
-          <span class="booking-modal_submit-text">Надіслати заявку</span>
+        <button class="booking-modal-submit-btn" type="submit">
+          <span class="booking-modal-submit-text">Надіслати заявку</span>
         </button>
       </form>
     </div>
