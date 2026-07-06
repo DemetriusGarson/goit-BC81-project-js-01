@@ -6,23 +6,23 @@ import { refs } from './common/refs';
 
 const BASE_URL = 'https://events-store.b.goit.study/api';
 
-const modalBooking = document.querySelector('.booking-modal');
-const closeBtnBooking = document.querySelector('.booking-modal_close-btn');
-const formBooking = document.querySelector('.booking-modal_form');
-const submitBtnBooking = document.querySelector('.booking-modal_submit-btn');
+export const modalBooking = document.querySelector('.booking-modal');
+const closeBtnBooking = document.querySelector('.booking-modal-close-btn');
+export const formBooking = document.querySelector('.booking-modal-form');
+const submitBtnBooking = document.querySelector('.booking-modal-submit-btn');
 
 const nameInput = formBooking.querySelector('[name="name"]');
 const phoneInput = formBooking.querySelector('[name="phone"]');
 const commentInput = formBooking.querySelector('[name="comment"]');
 const nameError = nameInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const phoneError = phoneInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const commentError = commentInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 
 formBooking.addEventListener('submit', handleFormBookingSubmit);
 // кнопка в хедері замовити івент
