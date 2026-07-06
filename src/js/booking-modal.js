@@ -49,6 +49,7 @@ export function closeBookingModal() {
   clearErrors();
   currentEventId = null;
   document.body.style.overflow = '';
+  document.body.classList.remove('no-scroll');
   document.removeEventListener('keydown', handleEscKeyPress);
   closeBtnBooking.removeEventListener('click', handleModalCloseBtnBookingClick);
   modalBooking.removeEventListener('click', handleBackDropClick);
