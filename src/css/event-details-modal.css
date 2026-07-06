@@ -98,8 +98,17 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  /*   /* 💡 ХОВАЄМО СКРОЛБАР ДЛЯ FIREFOX ТА IE/EDGE */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
+/* 💡 ХОВАЄМО СКРОЛБАР ДЛЯ CHROME, SAFARI ТА OPERA */
+.modal-event__wrapper::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 .modal-event__media {
   width: 100%;
   flex-shrink: 0;
@@ -132,6 +141,7 @@
   font-weight: 600;
   font-size: 18px;
   color: #000000;
+  line-height: 1.6;
 }
 
 .modal-event__stars {
@@ -153,7 +163,7 @@
 }
 
 .modal-event__star--empty {
-  fill: #cccccc !important;
+  fill: #000000 !important;
 }
 
 .modal-event__title {
@@ -185,6 +195,7 @@
   font-weight: 700;
   font-size: 18px;
   margin: 0 0 8px 0;
+  line-height: 1.6;
 }
 
 .modal-event__lists ul {
@@ -234,6 +245,7 @@
   font-size: 18px;
   color: #000000;
   cursor: pointer;
+  line-height: 1.6;
   align-self: flex-start;
   box-sizing: border-box;
   transition:
@@ -334,4 +346,7 @@ body.no-scroll {
     width: 32px;
     height: 32px;
   }
+}
+.simplebar-track {
+  display: none !important;
 }
