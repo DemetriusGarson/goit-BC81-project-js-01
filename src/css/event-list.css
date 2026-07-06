@@ -205,6 +205,9 @@ body {
 }
 .event-item img {
   border-radius: 8px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .event-title {

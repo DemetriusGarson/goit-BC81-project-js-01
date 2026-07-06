@@ -55,7 +55,9 @@ export function openCategoriesList(event) {
 }
 
 export function renderEvents(events) {
-  const markup = events
+  const validEvents = events.filter(({ image }) => image);
+
+  const markup = validEvents
     .map(({ _id, name, price, category, image }) => {
       return `<li class="event-item">
         <img
@@ -69,9 +71,12 @@ export function renderEvents(events) {
           <p class="event-text">${category.name}</p>
           <p class="event-price">від ${price.value} грн</p>
         </div>
-        <button type="button" class="event-details-btn" data-event-id="${_id}">Детальніше</button>
+        <button type="button" class="event-details-btn" data-event-id="${_id}">
+          Детальніше
+        </button>
       </li>`;
     })
     .join('');
+
   refs.eventsList.insertAdjacentHTML('beforeend', markup);
 }
