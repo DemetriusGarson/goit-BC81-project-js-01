@@ -6,27 +6,27 @@ import { refs } from './common/refs';
 
 const BASE_URL = 'https://events-store.b.goit.study/api';
 
-const modalBooking = document.querySelector('.booking-modal');
-const closeBtnBooking = document.querySelector('.booking-modal_close-btn');
-const formBooking = document.querySelector('.booking-modal_form');
-const submitBtnBooking = document.querySelector('.booking-modal_submit-btn');
+export const modalBooking = document.querySelector('.booking-modal');
+const closeBtnBooking = document.querySelector('.booking-modal-close-btn');
+export const formBooking = document.querySelector('.booking-modal-form');
+const submitBtnBooking = document.querySelector('.booking-modal-submit-btn');
 
 const nameInput = formBooking.querySelector('[name="name"]');
 const phoneInput = formBooking.querySelector('[name="phone"]');
 const commentInput = formBooking.querySelector('[name="comment"]');
 const nameError = nameInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const phoneError = phoneInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const commentError = commentInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 
 formBooking.addEventListener('submit', handleFormBookingSubmit);
 // кнопка в хедері замовити івент
-// const openBtn = document.querySelector('.consultation-btn');
+// const openBtn = document.querySelector('.modal-event__order-btn');
 // openBtn.addEventListener('click', () => {
 //   openBookingModal('6877b9f116ae59c7b60d90a2');
 // });
@@ -53,15 +53,15 @@ export function closeBookingModal() {
   closeBtnBooking.removeEventListener('click', handleModalCloseBtnBookingClick);
   modalBooking.removeEventListener('click', handleBackDropClick);
 }
-function handleEscKeyPress(event) {
+export function handleEscKeyPress(event) {
   if (event.code === 'Escape') {
     closeBookingModal();
   }
 }
-function handleModalCloseBtnBookingClick() {
+export function handleModalCloseBtnBookingClick() {
   closeBookingModal();
 }
-function handleBackDropClick(event) {
+export function handleBackDropClick(event) {
   if (event.target === modalBooking) {
     closeBookingModal();
   }
