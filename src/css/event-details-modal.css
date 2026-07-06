@@ -6,6 +6,7 @@
   height: 100vh !important;
   z-index: 999 !important;
   pointer-events: none;
+  
 }
 
 .section.event-details-modal.is-hidden {
