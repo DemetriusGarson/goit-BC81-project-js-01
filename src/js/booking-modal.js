@@ -6,27 +6,27 @@ import { refs } from './common/refs';
 
 const BASE_URL = 'https://events-store.b.goit.study/api';
 
-const modalBooking = document.querySelector('.booking-modal');
-const closeBtnBooking = document.querySelector('.booking-modal_close-btn');
-const formBooking = document.querySelector('.booking-modal_form');
-const submitBtnBooking = document.querySelector('.booking-modal_submit-btn');
+export const modalBooking = document.querySelector('.booking-modal');
+const closeBtnBooking = document.querySelector('.booking-modal-close-btn');
+export const formBooking = document.querySelector('.booking-modal-form');
+const submitBtnBooking = document.querySelector('.booking-modal-submit-btn');
 
 const nameInput = formBooking.querySelector('[name="name"]');
 const phoneInput = formBooking.querySelector('[name="phone"]');
 const commentInput = formBooking.querySelector('[name="comment"]');
 const nameError = nameInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const phoneError = phoneInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 const commentError = commentInput
-  .closest('.booking-modal_field')
-  .querySelector('.booking-modal_error');
+  .closest('.booking-modal-field')
+  .querySelector('.booking-modal-error');
 
 formBooking.addEventListener('submit', handleFormBookingSubmit);
 // кнопка в хедері замовити івент
-// const openBtn = document.querySelector('.consultation-btn');
+// const openBtn = document.querySelector('.modal-event__order-btn');
 // openBtn.addEventListener('click', () => {
 //   openBookingModal('6877b9f116ae59c7b60d90a2');
 // });
@@ -40,6 +40,7 @@ export function openBookingModal(eventId) {
   document.addEventListener('keydown', handleEscKeyPress);
   closeBtnBooking.addEventListener('click', handleModalCloseBtnBookingClick);
   modalBooking.addEventListener('click', handleBackDropClick);
+  allLogicBookingToLocalStorage();
 }
 
 export function closeBookingModal() {
@@ -48,19 +49,20 @@ export function closeBookingModal() {
   clearErrors();
   currentEventId = null;
   document.body.style.overflow = '';
+  document.body.classList.remove('no-scroll');
   document.removeEventListener('keydown', handleEscKeyPress);
   closeBtnBooking.removeEventListener('click', handleModalCloseBtnBookingClick);
   modalBooking.removeEventListener('click', handleBackDropClick);
 }
-function handleEscKeyPress(event) {
+export function handleEscKeyPress(event) {
   if (event.code === 'Escape') {
     closeBookingModal();
   }
 }
-function handleModalCloseBtnBookingClick() {
+export function handleModalCloseBtnBookingClick() {
   closeBookingModal();
 }
-function handleBackDropClick(event) {
+export function handleBackDropClick(event) {
   if (event.target === modalBooking) {
     closeBookingModal();
   }
@@ -149,6 +151,7 @@ async function handleFormBookingSubmit(event) {
       timeout: 6000,
     });
     closeBookingModal();
+    clearBookingLocalStorage();
   } catch (error) {
     if (error.status === 400) {
       iziToast.error({
@@ -177,4 +180,53 @@ export function showSubmitBtnBooking() {
 }
 export function hideSubmitBtnBooking() {
   submitBtnBooking.classList.add('is-hidden');
+}
+// Збереження даних в локал сторідж
+const STORAGE_KEY = 'dataBooking';
+const formDataBooking = {
+  name: '',
+  phone: '',
+  comment: '',
+};
+// name = event.target.value;
+function allLogicBookingToLocalStorage() {
+  // проверить есть ли в локал сторидж значения инпутов формов и если есть записать их к инпуту;
+  checkBookingLocalStorageValues();
+  formBooking.addEventListener('input', handleFormBookingInput);
+}
+
+function checkBookingLocalStorageValues() {
+  const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  console.log(storageData);
+  if (storageData) {
+    formBooking.elements.name.value = storageData.name;
+    formBooking.elements.phone.value = storageData.phone;
+    formBooking.elements.comment.value = storageData.comment;
+  }
+}
+
+function clearBookingLocalStorage() {
+  localStorage.removeItem(STORAGE_KEY);
+  formBooking.name = '';
+  formBooking.phone = '';
+  formBooking.comment = '';
+}
+
+function handleFormBookingInput(event) {
+  // const { name, phone, comment } = formDataBooking;
+  console.log(event.target);
+
+  if (event.target === formBooking.elements.name) {
+    formDataBooking.name = event.target.value;
+    console.log(formDataBooking.name);
+  }
+  if (event.target === formBooking.elements.phone) {
+    formDataBooking.phone = event.target.value;
+    console.log(formDataBooking.phone);
+  }
+  if (event.target === formBooking.elements.comment) {
+    formDataBooking.comment = event.target.value;
+    console.log(formDataBooking.comment);
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formDataBooking));
 }

@@ -3,6 +3,7 @@ import { refs } from './refs';
 import SimpleBar from 'simplebar';
 import 'simplebar/dist/simplebar.css';
 
+let isScrollDone = false;
 export function renderCategories(allcategories) {
   const categoryList = [
     {
@@ -28,21 +29,35 @@ export function renderCategories(allcategories) {
   if (refs.firstCategoryButton) {
     refs.firstCategoryButton.classList.add('categories__btn--active');
   }
-  if (window.innerWidth < 768 && !refs.categoriesListEl.SimpleBar) {
-    new SimpleBar(refs.categoriesListEl, {
-      autoHide: false,
-    });
-  }
+  // if (window.innerWidth < 768 && !refs.categoriesListEl.SimpleBar) {
+  //   new SimpleBar(refs.categoriesListEl, {
+  //     autoHide: false,
+  //   });
+  // }
 }
 
 refs.caregoryListSelect.addEventListener('click', openCategoriesList);
 export function openCategoriesList(event) {
   refs.categoriesListOpenSvgBtn.classList.toggle('icon-rotate-rotated');
   refs.categoriesListOpen.classList.toggle('is-hidden');
+  if (
+    window.innerWidth < 768 &&
+    !isScrollDone &&
+    !refs.categoriesListOpen.classList.contains('is-hidden')
+  ) {
+    if (window.innerWidth < 768 && !refs.categoriesListEl.SimpleBar) {
+      const simpleBar = new SimpleBar(refs.categoriesScroll, {
+        autoHide: false,
+      });
+      simpleBar.recalculate();
+    }
+  }
 }
 
 export function renderEvents(events) {
-  const markup = events
+  const validEvents = events.filter(({ image }) => image);
+
+  const markup = validEvents
     .map(({ _id, name, price, category, image }) => {
       return `<li class="event-item">
         <img
@@ -56,9 +71,12 @@ export function renderEvents(events) {
           <p class="event-text">${category.name}</p>
           <p class="event-price">від ${price.value} грн</p>
         </div>
-        <button type="button" class="event-details-btn" data-event-id="${_id}">Детальніше</button>
+        <button type="button" class="event-details-btn" data-event-id="${_id}">
+          Детальніше
+        </button>
       </li>`;
     })
     .join('');
+
   refs.eventsList.insertAdjacentHTML('beforeend', markup);
 }
