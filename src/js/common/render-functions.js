@@ -55,23 +55,31 @@ export function openCategoriesList(event) {
 }
 
 export function renderEvents(events) {
-  const validEvents = events.filter(({ image }) => image);
+  const PLACEHOLDER =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwWTCjrYnFjj8EYfWdauJQ3dcybEFwaAIuRbQd8SQxu09hdbyzPESKpqs&s=10';
 
-  const markup = validEvents
+  const markup = events
     .map(({ _id, name, price, category, image }) => {
+      const imageSrc = image || PLACEHOLDER;
+
       return `<li class="event-item">
         <img
-          src="${image}"
+          src="${imageSrc}"
           alt="${name}"
           width="335"
           height="251"
+          onerror="this.onerror=null;this.src='${PLACEHOLDER}'"
         />
         <div class="event-info">
           <p class="event-title">${name}</p>
           <p class="event-text">${category.name}</p>
           <p class="event-price">від ${price.value} грн</p>
         </div>
-        <button type="button" class="event-details-btn" data-event-id="${_id}">
+        <button
+          type="button"
+          class="event-details-btn"
+          data-event-id="${_id}"
+        >
           Детальніше
         </button>
       </li>`;
