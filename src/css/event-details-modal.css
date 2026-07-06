@@ -227,7 +227,7 @@
   height: 45px;
   flex-shrink: 0 !important;
   background-color: #ffd554;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 6px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
