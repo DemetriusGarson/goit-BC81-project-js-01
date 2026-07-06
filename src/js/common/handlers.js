@@ -16,50 +16,24 @@ export function checkWidthScreen() {
     : API_ENDPOINTS.LIMIT;
 }
 
-function getValidEvents(events) {
-  return events.filter(({ image }) => image);
-}
-
-async function getValidEventsPage() {
-  const limit = checkWidthScreen();
-  let validEvents = [];
-
-  while (validEvents.length < limit) {
-    const { events, totalItems } = await getEvents(
-      currentPage,
-      currentCategory,
-      limit
-    );
-
-    totalCurrentItems = totalItems;
-    validEvents.push(...getValidEvents(events));
-
-    if (currentPage * limit >= totalItems) break;
-
-    if (validEvents.length < limit) {
-      currentPage += 1;
-    }
-  }
-
-  return validEvents.slice(0, limit);
-}
-
 export async function initEventList() {
   try {
     showLoader();
 
-    const categories = await getCategories();
+    const limit = checkWidthScreen();
+
+    const [categories, data] = await Promise.all([
+      getCategories(),
+      getEvents(currentPage, currentCategory, limit),
+    ]);
+
     renderCategories(categories);
 
-    currentPage = 1;
-    currentCategory = 'all';
-    renderedEventsCount = 0;
     refs.eventsList.innerHTML = '';
+    renderEvents(data.events);
 
-    const eventsToRender = await getValidEventsPage();
-
-    renderEvents(eventsToRender);
-    renderedEventsCount = eventsToRender.length;
+    renderedEventsCount = data.events.length;
+    totalCurrentItems = data.totalItems;
 
     checkEventsLimit();
   } catch (error) {
@@ -81,10 +55,13 @@ export async function handleGetEventsByCategory(event) {
     renderedEventsCount = 0;
     refs.eventsList.innerHTML = '';
 
-    const eventsToRender = await getValidEventsPage();
+    const limit = checkWidthScreen();
+    const data = await getEvents(currentPage, currentCategory, limit);
 
-    renderEvents(eventsToRender);
-    renderedEventsCount = eventsToRender.length;
+    renderEvents(data.events);
+
+    renderedEventsCount = data.events.length;
+    totalCurrentItems = data.totalItems;
 
     checkEventsLimit();
   } catch (error) {
@@ -100,10 +77,13 @@ export async function handleShowMoreBtnClick() {
 
     currentPage += 1;
 
-    const eventsToRender = await getValidEventsPage();
+    const limit = checkWidthScreen();
+    const data = await getEvents(currentPage, currentCategory, limit);
 
-    renderEvents(eventsToRender);
-    renderedEventsCount += eventsToRender.length;
+    renderEvents(data.events);
+
+    renderedEventsCount += data.events.length;
+    totalCurrentItems = data.totalItems;
 
     checkEventsLimit();
   } catch (error) {
@@ -146,14 +126,6 @@ export async function handleEventDetailsModal(event) {
       orderBtn.addEventListener('click', handleOrderButtonClick);
     }
   } catch (error) {
-    if (typeof iziToast !== 'undefined') {
-      iziToast.error({
-        title: 'Error',
-        message: 'Не вдалося завантажити деталі події.',
-        position: 'topRight',
-      });
-    }
-
     console.log('error during opening event modal', error);
   }
 }
