@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'css-star-rating/css/star-rating.css';
 
 const feedbackSwiperElement = document.querySelector('.feedback-swiper'); //todo: move to refs.js
+const feedbackList = document.querySelector('.js-feedback-list'); //todo: move to refs.js
 
 const MOBILE_WIDTH_PX = 375;
 const TABLET_WIDTH_PX = 768;
@@ -57,4 +58,132 @@ async function getFeedbacks(limit = 10, page = 1) {
 }
 
 const { feedbacks } = await getFeedbacks(); //todo: move to some js file in /common. init() of some sort in handlers
-console.log(feedbacks);
+
+//todo: move to render-functions.js
+function renderFeedbacks(feedbacks) {
+  const markup = feedbacks.map(createFeedbackMarkup).join('');
+  feedbackList.innerHTML = markup;
+}
+renderFeedbacks(feedbacks);
+
+function createFeedbackMarkup({ author, date, description, rate }) {
+  const ratingDecimal = rate % 1;
+  const isHalfStarShown = ratingDecimal >= 0.5;
+  const halfStarClass = isHalfStarShown ? 'half' : '';
+
+  const fullStars = Math.floor(rate);
+
+  return `<li class="feedback-item swiper-slide">
+  <div class="feedback-content">
+    <div class="feedback-raiting rating value-${fullStars} ${halfStarClass} ">
+      <ul class="star-container">
+        <li class="star">
+          <svg class="star-empty star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-star"
+            ></use>
+          </svg>
+          <svg class="star-half star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-half-star"
+            ></use>
+          </svg>
+          <svg class="star-filled star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-full-star"
+            ></use>
+          </svg>
+        </li>
+        <li class="star">
+          <svg class="star-empty star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-star"
+            ></use>
+          </svg>
+          <svg class="star-half star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-half-star"
+            ></use>
+          </svg>
+          <svg class="star-filled star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-full-star"
+            ></use>
+          </svg>
+        </li>
+        <li class="star">
+          <svg class="star-empty star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-star"
+            ></use>
+          </svg>
+          <svg class="star-half star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-half-star"
+            ></use>
+          </svg>
+          <svg class="star-filled star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-full-star"
+            ></use>
+          </svg>
+        </li>
+        <li class="star">
+          <svg class="star-empty star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-star"
+            ></use>
+          </svg>
+          <svg class="star-half star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-half-star"
+            ></use>
+          </svg>
+          <svg class="star-filled star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-full-star"
+            ></use>
+          </svg>
+        </li>
+        <li class="star">
+          <svg class="star-empty star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-star"
+            ></use>
+          </svg>
+          <svg class="star-half star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-half-star"
+            ></use>
+          </svg>
+          <svg class="star-filled star-icon" width="17" height="17">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/img/sprite.svg#icon-full-star"
+            ></use>
+          </svg>
+        </li>
+      </ul>
+    </div>
+    <p class="feedback-text">${description}</p>
+  </div>
+  <div class="feedback-avatar">
+    <p class="feedback-author">${author}</p>
+    <p class="feedback-date">${date}</p>
+  </div>
+</li>`;
+}
