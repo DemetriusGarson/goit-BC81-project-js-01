@@ -188,6 +188,13 @@
   }
 }
 
+.about-us-button-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 /* Tablet */
 @media only screen and (min-width: 768px) {
   .about-us-title {
