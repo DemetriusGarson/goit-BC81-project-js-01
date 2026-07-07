@@ -46,10 +46,20 @@ export async function initEventList() {
 }
 
 export async function handleGetEventsByCategory(event) {
+  const currentActiveCategoryItem = document.querySelector(
+    '.event-category-item.is-active'
+  );
+  if (currentActiveCategoryItem) {
+    currentActiveCategoryItem.classList.remove('is-active');
+  }
   refs.showMoreBtn.classList.add('is-hidden-btn-more');
   const categoryItem = event.target.closest('.event-category-item');
   if (!categoryItem) return;
-
+  categoryItem.classList.add('is-active');
+  const categoryTitle = categoryItem.querySelector(
+    '.event-category-title'
+  ).textContent;
+  document.querySelector('.current-category').textContent = categoryTitle;
   try {
     showLoader();
 
