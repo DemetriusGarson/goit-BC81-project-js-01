@@ -18,7 +18,7 @@ export function renderCategories(allcategories) {
     .map(({ _id, name, tags }, index) => {
       const dynamicClass = getCategoryClass(categoryList.length, index);
       const tagsList = tags.map(tag => `#${tag} `).join('');
-      return `<li class="event-category-item ${dynamicClass}" data-category="${_id}">
+      return `<li class="event-category-item ${index === 0 ? 'is-active' : ''} ${dynamicClass}" data-category="${_id}">
           <p class="event-category-title">${name}</p>
           <p class="event-category-tags">${tagsList}</p>
         </li>`;
@@ -42,15 +42,23 @@ export function openCategoriesList(event) {
   refs.categoriesListOpen.classList.toggle('is-hidden');
   if (
     window.innerWidth < 768 &&
-    !isScrollDone &&
     !refs.categoriesListOpen.classList.contains('is-hidden')
   ) {
-    if (window.innerWidth < 768 && !refs.categoriesListEl.SimpleBar) {
-      const simpleBar = new SimpleBar(refs.categoriesScroll, {
-        autoHide: false,
-      });
-      simpleBar.recalculate();
-    }
+    setTimeout(() => {
+      if (
+        !refs.categoriesScroll.hasAttribute('data-simplebar') &&
+        !refs.categoriesScroll.SimpleBar
+      ) {
+        const simpleBarInstance = new SimpleBar(refs.categoriesScroll, {
+          autoHide: false,
+        });
+        refs.categoriesScroll.SimpleBar = simpleBarInstance;
+      } else {
+        if (refs.categoriesScroll.SimpleBar) {
+          refs.categoriesScroll.SimpleBar.recalculate();
+        }
+      }
+    }, 50);
   }
 }
 
