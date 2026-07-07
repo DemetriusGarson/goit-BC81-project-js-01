@@ -42,6 +42,9 @@ const swiperOptions = {
 
 export const feedbackSwiper = new Swiper(feedbackSwiperElement, swiperOptions);
 
+//todo: move to some js file in /common. init() of some sort in handlers
+initFeedbacks();
+
 async function getFeedbacks(limit = 10, page = 1) {
   //todo: move to api.js
   const params = {
@@ -57,14 +60,16 @@ async function getFeedbacks(limit = 10, page = 1) {
   return data;
 }
 
-const { feedbacks } = await getFeedbacks(); //todo: move to some js file in /common. init() of some sort in handlers
+export async function initFeedbacks() {
+  const { feedbacks } = await getFeedbacks();
+  renderFeedbacks(feedbacks);
+}
 
 //todo: move to render-functions.js
 function renderFeedbacks(feedbacks) {
   const markup = feedbacks.map(createFeedbackMarkup).join('');
   feedbackList.innerHTML = markup;
 }
-renderFeedbacks(feedbacks);
 
 function createFeedbackMarkup({ author, date, description, rate }) {
   const ratingDecimal = rate % 1;
