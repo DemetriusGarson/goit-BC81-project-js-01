@@ -20,6 +20,10 @@
 
 .feedback-swiper.swiper {
   margin-bottom: 16px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 }
 
 .feedback-list {
@@ -113,6 +117,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.feedback .swiper-pagination-bullets {
+  @media only screen and (min-width: 768px) {
+    transform: translate(-50%) scale(1.4) !important;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    transform: translate(-50%) scale(1.8) !important;
+  }
 }
 
 /* buttons */
