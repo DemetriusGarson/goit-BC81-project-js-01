@@ -184,10 +184,9 @@
   box-sizing: border-box;
   animation: rotation-feedback 1s linear infinite;
   margin: 0 auto;
-
-  position: absolute;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
+  display: block;
+  position: relative;
+  top: -12px;
 }
 
 @keyframes rotation-feedback {
@@ -198,10 +197,6 @@
     transform: rotate(360deg);
   }
 }
-.feedback-loader-wrapper.is-hidden {
+.feedback-loader.is-hidden {
   display: none;
-}
-
-.feedback-list-loader-wrapper {
-  height: 416px;
 }

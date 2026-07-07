@@ -10,7 +10,7 @@ import 'css-star-rating/css/star-rating.css';
 
 const feedbackSwiperElement = document.querySelector('.feedback-swiper'); //todo: move to refs.js
 const feedbackList = document.querySelector('.js-feedback-list'); //todo: move to refs.js
-const feedbackLoader = document.querySelector('.feedback-loader-wrapper'); //todo: move to refs.js
+const feedbackLoader = document.querySelector('.feedback-loader'); //todo: move to refs.js
 
 const MOBILE_WIDTH_PX = 375;
 const TABLET_WIDTH_PX = 768;
