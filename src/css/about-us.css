@@ -165,31 +165,27 @@
     background-color 250ms ease,
     color 250ms ease,
     opacity 250ms ease;
-}
 
-.about-us-button:hover,
-.about-us-button:focus {
-  background-color: #e6e6e6;
-}
+  background: #f2f2f2;
 
-.about-us-button:active {
-  background-color: #d9d9d9;
-}
+  transition:
+    border 0.2s ease-in-out,
+    background 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
 
-.about-us-button.swiper-button-disabled,
-.about-us-button:disabled {
-  cursor: not-allowed;
-  opacity: 1;
-  color: #b7b7b7;
-  background-color: #f3f3f3;
-  border-color: #e6e6e6;
-}
-
-.about-us-button-icon {
-  display: block;
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+  &:hover,
+  &:focus {
+    border: 2px solid #ffd554;
+    background: #ffffff;
+  }
+  &:active {
+    border: 2px solid #ffd554;
+    background: #fff6dc;
+  }
+  &:disabled {
+    background: #f2f2f2;
+    opacity: 0.3;
+  }
 }
 
 /* Tablet */
