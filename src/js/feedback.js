@@ -8,6 +8,9 @@ import 'swiper/css/pagination';
 
 import 'css-star-rating/css/star-rating.css';
 
+import iconsUrl from '/img/sprite.svg';
+
+
 const feedbackSwiperElement = document.querySelector('.feedback-swiper'); //todo: move to refs.js
 const feedbackList = document.querySelector('.js-feedback-list'); //todo: move to refs.js
 const feedbackLoader = document.querySelector('.feedback-loader'); //todo: move to refs.js
@@ -100,19 +103,19 @@ function createFeedbackMarkup({ author, date, description, rate }) {
           <svg class="star-empty star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-star"
+              xlink:href="${iconsUrl}#icon-star"
             ></use>
           </svg>
           <svg class="star-half star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-half-star"
+              xlink:href="${iconsUrl}#icon-half-star"
             ></use>
           </svg>
           <svg class="star-filled star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-full-star"
+              xlink:href="${iconsUrl}#icon-full-star"
             ></use>
           </svg>
         </li>
@@ -120,19 +123,19 @@ function createFeedbackMarkup({ author, date, description, rate }) {
           <svg class="star-empty star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-star"
+              xlink:href="${iconsUrl}#icon-star"
             ></use>
           </svg>
           <svg class="star-half star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-half-star"
+              xlink:href="${iconsUrl}#icon-half-star"
             ></use>
           </svg>
           <svg class="star-filled star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-full-star"
+              xlink:href="${iconsUrl}#icon-full-star"
             ></use>
           </svg>
         </li>
@@ -140,19 +143,19 @@ function createFeedbackMarkup({ author, date, description, rate }) {
           <svg class="star-empty star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-star"
+              xlink:href="${iconsUrl}#icon-star"
             ></use>
           </svg>
           <svg class="star-half star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-half-star"
+              xlink:href="${iconsUrl}#icon-half-star"
             ></use>
           </svg>
           <svg class="star-filled star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-full-star"
+              xlink:href="${iconsUrl}#icon-full-star"
             ></use>
           </svg>
         </li>
@@ -160,19 +163,19 @@ function createFeedbackMarkup({ author, date, description, rate }) {
           <svg class="star-empty star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-star"
+              xlink:href="${iconsUrl}#icon-star"
             ></use>
           </svg>
           <svg class="star-half star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-half-star"
+              xlink:href="${iconsUrl}#icon-half-star"
             ></use>
           </svg>
           <svg class="star-filled star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-full-star"
+              xlink:href="${iconsUrl}#icon-full-star"
             ></use>
           </svg>
         </li>
@@ -180,19 +183,19 @@ function createFeedbackMarkup({ author, date, description, rate }) {
           <svg class="star-empty star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-star"
+              xlink:href="${iconsUrl}#icon-star"
             ></use>
           </svg>
           <svg class="star-half star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-half-star"
+              xlink:href="${iconsUrl}#icon-half-star"
             ></use>
           </svg>
           <svg class="star-filled star-icon" width="17" height="17">
             <use
               xmlns:xlink="http://www.w3.org/1999/xlink"
-              xlink:href="/img/sprite.svg#icon-full-star"
+              xlink:href="${iconsUrl}#icon-full-star"
             ></use>
           </svg>
         </li>
