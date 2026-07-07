@@ -1,20 +1,40 @@
+.section.feedback {
+  overflow: hidden;
+  background: #fffaed;
+  --swiper-theme-color: #000000;
+  --swiper-pagination-color: #000000;
+}
+
 .feedback-title {
   font-family: var(--second-font-family);
+}
+
+.feedback-slider-wrapper {
+  position: relative;
+}
+
+.feedback-swiper,
+.feedback-list.swiper-wrapper {
+  z-index: 0 !important;
+}
+
+.feedback-swiper.swiper {
+  margin-bottom: 16px;
 }
 
 .feedback-list {
   display: flex;
   flex-direction: row;
-  gap: 32px;
-
-  /* todo: for demo. delete when add swiper */
-  flex-wrap: wrap;
 }
 
-.feedback-item {
+.feedback-item,
+.feedback-item.swiper-slide {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  justify-content: space-between;
+  height: auto;
 
   border-radius: 8px;
   padding: 32px;
@@ -30,10 +50,33 @@
   gap: 24px;
 }
 
-.feedback-raiting {
-  /* todo: for demo. update when add js lib */
+.feedback-raiting.rating {
+  margin: 0px;
+}
+
+.feedback-raiting .star-container {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
   gap: 4px;
+  margin: 0px;
+}
+
+.feedback-raiting .star {
+  width: 24px;
+  height: 24px;
+}
+
+.feedback-raiting .star-icon {
+  width: 17px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: auto;
+  left: auto;
+  fill: #000 !important;
 }
 
 .feedback-text {
@@ -59,6 +102,69 @@
 
 .feedback-date {
   line-height: 1.6;
+}
+
+/* pagination */
+
+.feedback-pagination-wrapper {
+  height: 28px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* buttons */
+
+.feedback-buttons {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  right: 0;
+}
+
+.feedback-button {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+
+  background: #f2f2f2;
+
+  transition:
+    border 0.2s ease-in-out,
+    background 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    border: 2px solid #ffd554;
+    background: #ffffff;
+  }
+  &:active {
+    border: 2px solid #ffd554;
+    background: #fff6dc;
+  }
+  &:disabled {
+    background: #f2f2f2;
+    opacity: 0.3;
+  }
+}
+
+.feedback-prev {
+  left: -28px;
+}
+.feedback-next {
+  right: -28px;
 }
 
 .feedback-icon {
