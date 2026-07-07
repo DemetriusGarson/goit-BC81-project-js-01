@@ -1,4 +1,5 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
 
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -61,8 +62,16 @@ async function getFeedbacks(limit = 10, page = 1) {
 }
 
 export async function initFeedbacks() {
-  const { feedbacks } = await getFeedbacks();
-  renderFeedbacks(feedbacks);
+  try {
+    const { feedbacks } = await getFeedbacks();
+    renderFeedbacks(feedbacks);
+  } catch (error) {
+    iziToast.error({
+      message: 'Помилка отримання відгуків',
+      position: 'topRight',
+    });
+    console.log(error);
+  }
 }
 
 //todo: move to render-functions.js
