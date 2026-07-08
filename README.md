@@ -1,20 +1,20 @@
 A responsive web application for browsing and booking event services. Users can explore different event categories, view detailed information, and submit booking requests through a convenient interface.
 
-## :sparkles: Features
+## Features
 
-- :iphone: Responsive design (Mobile / Tablet / Desktop)
-- :balloon: Event categories
-- :mag: Event filtering by category
-- :page_facing_up: Event details modal window
-- :memo: Booking form
-- :hourglass_flowing_sand: Pagination ("Show More")
-- :art: Modern UI
-- :zap: Fast loading using Vite
-- :arrows_counterclockwise: API integration with Axios
+- Responsive design (Mobile / Tablet / Desktop)
+- Event categories
+- Event filtering by category
+- Event details modal window
+- Booking form
+- Pagination ("Show More")
+- Modern UI
+- Fast loading using Vite
+- API integration with Axios
 
 ---
 
-## :hammer_and_wrench: Built With
+## Built With
 
 - HTML5
 - CSS3
@@ -24,25 +24,6 @@ A responsive web application for browsing and booking event services. Users can 
 - SimpleBar
 - Flatpickr
 - iziToast
-
----
-
-## :open_file_folder: Project Structure
-
-```
-src/
-│
-├── css/
-├── img/
-├── js/
-│   ├── common/
-│   ├── event-details-modal.js
-│   ├── booking-modal.js
-│   └── main.js
-│
-├── partials/
-└── index.html
-```
 
 ---
 
@@ -86,7 +67,7 @@ npm run preview
 
 ---
 
-## :camera_with_flash: Main Functionality
+## Main Functionality
 
 ### Categories
 
@@ -115,7 +96,7 @@ npm run preview
 
 ---
 
-## :iphone: Responsive Breakpoints
+## Responsive Breakpoints
 
 | Device  | Width   |
 | ------- | ------- |
@@ -125,10 +106,9 @@ npm run preview
 
 ---
 
-## :busts_in_silhouette: Team
+## Team
 
 Developed by "Eleven friends of Java Script" as a collaborative JavaScript project.
 
 ---
 
-## :page_facing_up: License
