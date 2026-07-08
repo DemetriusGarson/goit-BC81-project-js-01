@@ -3,7 +3,7 @@ import { API_ENDPOINTS, API_BASE_URL } from './common/constans';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
+
 import 'swiper/css/pagination';
 import { handleEventDetailsModal } from './common/handlers';
 
@@ -49,7 +49,7 @@ function renderPopularEvents(events) {
 async function initPopularEvents() {
   try {
     const data = await getPopularEvents();
-    const events = data.events.slice(0, 5);
+    const events = data.events;
     renderPopularEvents(events);
     document
       .querySelector('.popular-list')
@@ -57,18 +57,21 @@ async function initPopularEvents() {
     new Swiper('.popular-swiper', {
       modules: [Navigation, Pagination],
       slidesPerView: 1,
+      slidesPerGroup: 1,
       spaceBetween: 24,
+      watchOverflow: true,
       navigation: {
         prevEl: '.popular-button-prev',
         nextEl: '.popular-button-next',
       },
       pagination: {
         el: '.popular-pagination',
+        dynamicBullets: true,
         clickable: true,
       },
       breakpoints: {
         768: { slidesPerView: 2 },
-        1440: { slidesPerView: 3 },
+        1440: { slidesPerView: 4, spaceBetween: 32 },
       },
     });
   } catch (error) {
