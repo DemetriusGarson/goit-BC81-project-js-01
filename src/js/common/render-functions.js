@@ -19,9 +19,11 @@ export function renderCategories(allcategories) {
       const dynamicClass = getCategoryClass(categoryList.length, index);
       const tagsList = tags.map(tag => `#${tag} `).join('');
       return `<li class="event-category-item ${index === 0 ? 'is-active' : ''} ${dynamicClass}" data-category="${_id}">
-          <p class="event-category-title">${name}</p>
-          <p class="event-category-tags">${tagsList}</p>
-        </li>`;
+    <button type="button" class="event-category-btn">
+      <span class="event-category-title">${name}</span>
+      <span class="event-category-tags">${tagsList}</span>
+    </button>
+  </li>`;
     })
     .join('');
 
