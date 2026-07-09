@@ -1,5 +1,6 @@
 import axios from 'axios';
 import iconsUrl from '/img/sprite.svg';
+import templateEventImage from '/img/template_event_image_opt.avif';
 
 const API_BASE_URL = 'https://events-store.b.goit.study';
 
@@ -27,14 +28,15 @@ export function renderEventModal(event) {
     audience,
     category,
     program,
-    inclusions
+    inclusions,
   } = event;
 
   let starsMarkup = '';
   const fullStars = Math.floor(rate);
   const remainder = rate - fullStars;
   const hasHalfStar = remainder >= 0.25 && remainder < 0.75;
-  const totalIconsCalculated = fullStars + (hasHalfStar ? 1 : (remainder >= 0.75 ? 1 : 0));
+  const totalIconsCalculated =
+    fullStars + (hasHalfStar ? 1 : remainder >= 0.75 ? 1 : 0);
 
   for (let i = 0; i < fullStars; i += 1) {
     starsMarkup += `
@@ -66,6 +68,9 @@ export function renderEventModal(event) {
     `;
   }
 
+  const PLACEHOLDER = templateEventImage;
+  const imageSrc = image || PLACEHOLDER;
+
   const programList = program.map(step => `<li>${step}</li>`).join('');
   const inclusionsList = inclusions.map(item => `<li>${item}</li>`).join('');
 
@@ -74,7 +79,7 @@ export function renderEventModal(event) {
     
     <div class="modal-event__wrapper">
       <div class="modal-event__media">
-        <img class="modal-event__img" src="${image}" alt="${name}" />
+        <img class="modal-event__img" src="${imageSrc}" alt="${name}" />
       </div>
       
       <div class="modal-event__content">
@@ -111,4 +116,3 @@ export function renderEventModal(event) {
 
   modalContainer.innerHTML = markup;
 }
-
