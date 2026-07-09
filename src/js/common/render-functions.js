@@ -2,6 +2,7 @@ import { getCategoryClass } from './helpers';
 import { refs } from './refs';
 import SimpleBar from 'simplebar';
 import 'simplebar/dist/simplebar.css';
+import templateEventImage from '/img/template_event_image_opt.avif';
 
 let isScrollDone = false;
 export function renderCategories(allcategories) {
@@ -65,8 +66,7 @@ export function openCategoriesList(event) {
 }
 
 export function renderEvents(events) {
-  const PLACEHOLDER =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwWTCjrYnFjj8EYfWdauJQ3dcybEFwaAIuRbQd8SQxu09hdbyzPESKpqs&s=10';
+  const PLACEHOLDER = templateEventImage;
 
   const markup = events
     .map(({ _id, name, price, category, image }) => {
